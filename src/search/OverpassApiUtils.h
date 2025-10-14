@@ -14,7 +14,15 @@ namespace geo::overpass
 
 using OsmId = std::int64_t;         // Type alias for OpenStreetMap (OSM) IDs.
 using OsmIds = std::vector<OsmId>;  // Type alias for a list of OSM IDs.
+struct CityDetail {
+    double latitude;
+    double longitude;
+    std::string tourism_type;
+    std::string name;
+    std::string name_en;
+};
 
+std::vector<CityDetail> LoadCityDetails(OsmId relationId, WebClient& client);
 // Extracts all IDs of entities with type "relation" from a JSON response.
 // @param json: The JSON response from the Overpass API.
 // @return: A list of OSM IDs for the relations found.
